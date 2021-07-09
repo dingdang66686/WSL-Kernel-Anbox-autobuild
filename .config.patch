@@ -1,0 +1,63 @@
+--- .config	2021-07-09 16:59:13.609004100 +0800
++++ .config1	2021-07-09 17:03:09.579004100 +0800
+@@ -2,12 +2,14 @@
+ # Automatically generated file; DO NOT EDIT.
+ # Linux/x86 5.10.43.3 Kernel Configuration
+ #
+-CONFIG_CC_VERSION_TEXT="x86_64-msft-linux-gcc (GCC) 9.3.0"
++CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
+ CONFIG_CC_IS_GCC=y
+ CONFIG_GCC_VERSION=90300
+ CONFIG_LD_VERSION=234000000
+ CONFIG_CLANG_VERSION=0
+ CONFIG_LLD_VERSION=0
++CONFIG_CC_CAN_LINK=y
++CONFIG_CC_CAN_LINK_STATIC=y
+ CONFIG_CC_HAS_ASM_GOTO=y
+ CONFIG_CC_HAS_ASM_INLINE=y
+ CONFIG_IRQ_WORK=y
+@@ -2366,7 +2368,30 @@
+ # end of Microsoft Hyper-V guest support
+ 
+ # CONFIG_GREYBUS is not set
+-# CONFIG_STAGING is not set
++CONFIG_STAGING=y
++# CONFIG_COMEDI is not set
++# CONFIG_RTS5208 is not set
++# CONFIG_STAGING_MEDIA is not set
++
++#
++# Android
++#
++CONFIG_ASHMEM=y
++# CONFIG_ION is not set
++# end of Android
++
++# CONFIG_GS_FPGABOOT is not set
++# CONFIG_UNISYSSPAR is not set
++
++#
++# Gasket devices
++#
++# CONFIG_STAGING_GASKET_FRAMEWORK is not set
++# end of Gasket devices
++
++# CONFIG_FIELDBUS_DEV is not set
++# CONFIG_KPC2000 is not set
++# CONFIG_QLGE is not set
+ # CONFIG_X86_PLATFORM_DEVICES is not set
+ CONFIG_PMC_ATOM=y
+ # CONFIG_CHROME_PLATFORMS is not set
+@@ -2507,7 +2532,11 @@
+ #
+ # Android
+ #
+-# CONFIG_ANDROID is not set
++CONFIG_ANDROID=y
++CONFIG_ANDROID_BINDER_IPC=y
++# CONFIG_ANDROID_BINDERFS is not set
++CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
++# CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
+ # end of Android
+ 
+ CONFIG_LIBNVDIMM=y
