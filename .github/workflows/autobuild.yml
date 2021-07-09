@@ -42,4 +42,4 @@ jobs:
       - uses:  actions/upload-artifact@v2
         with:
           name: kernel
-          path: WSL2-Linux-Kernelarch/x86/boot/bzImage
+          path: WSL2-Linux-Kernel/arch/x86/boot/bzImage
