@@ -32,7 +32,7 @@ jobs:
       - name: Enable drivers for anbox
         run: |
           cd WSL2-Linux-Kernel
-          cp Microsoft/config-wsl .config && patch -p1 < ../.config.patch
+          cp Microsoft/config-wsl .config && patch -p0 < ../.config.patch
       
       - name: Build linux kernel
         run: |
