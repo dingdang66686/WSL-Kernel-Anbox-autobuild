@@ -24,18 +24,22 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Fetch latest wsl kernel source
-        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y && cd WSL2-Linux-Kernel
+        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y
         
       - name: Install build tool chain
         run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev -y
       
       - name: Enable drivers for anbox
-        run: cp Microsoft/config-wsl .config && patch -p1 < ../.config.patch
+        run: |
+          cd WSL2-Linux-Kernel
+          cp Microsoft/config-wsl .config && patch -p1 < ../.config.patch
       
       - name: Build linux kernel
-        run: make
+        run: |
+          cd WSL2-Linux-Kernel
+          make
         
       - uses:  actions/upload-artifact@v2
         with:
           name: kernel
-          path: arch/x86/boot/bzImage
+          path: WSL2-Linux-Kernelarch/x86/boot/bzImage
