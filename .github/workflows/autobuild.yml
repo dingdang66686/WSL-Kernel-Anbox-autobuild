@@ -50,4 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         with:
           files: WSL2-Linux-Kernel/arch/x86/boot/bzImage
+          name: ${{ env.date2 }}
+          tag_name: ${{ env.date }}
 
