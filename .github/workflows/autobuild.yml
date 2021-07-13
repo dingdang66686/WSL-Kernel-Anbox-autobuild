@@ -38,12 +38,9 @@ jobs:
       - name: Build linux kernel
         run: make
           
-      - name: Upload to release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
+          repo_token: "${{ secrets.REPO_TOKEN }}"
           files: arch/x86/boot/bzImage
-          tag_name: v1.0
           
 
