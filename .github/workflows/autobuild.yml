@@ -37,10 +37,15 @@ jobs:
       
       - name: Build linux kernel
         run: make
-          
+      
+      - name: Get date
+        run: echo "date=$(date +'%m/%d_%Y_%H/%M')" >> $GITHUB_ENV
+      
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.REPO_TOKEN }}"
-          files: arch/x86/boot/bzImage
+          files: arch/x86/boot/bzImage  
+          prerelease: false
+          automatic_release_tag: ${{ env.date }}
           
 
