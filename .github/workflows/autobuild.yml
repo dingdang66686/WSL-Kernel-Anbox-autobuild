@@ -20,18 +20,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
       - name: Fetch latest wsl kernel source
-        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y
+        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y .
         
       - name: Install build tool chain
         run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev -y
       
       - name: Enable drivers for anbox
         run: |
-          cd WSL2-Linux-Kernel
           cp Microsoft/config-wsl .config
           echo CONFIG_STAGING=y >> .config
           echo CONFIG_ASHMEM=y >> .config
@@ -40,16 +36,14 @@ jobs:
           echo CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder" >> .config
       
       - name: Build linux kernel
-        run: |
-          cd WSL2-Linux-Kernel
-          make
+        run: make
           
       - name: Upload to release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
         with:
-          files: WSL2-Linux-Kernel/arch/x86/boot/bzImage
-          name: ${{ env.date2 }}
-          tag_name: ${{ env.date }}
+          files: arch/x86/boot/bzImage
+          tag_name: v1.0
+          
 
