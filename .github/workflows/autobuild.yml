@@ -24,7 +24,7 @@ jobs:
         run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y .
         
       - name: Install build tool chain
-        run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev -y
+        run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev dwarves -y
       
       - name: Enable drivers for anbox
         run: |
