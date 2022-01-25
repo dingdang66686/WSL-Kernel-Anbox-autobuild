@@ -21,7 +21,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Fetch latest wsl kernel source
-        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel -b linux-msft-wsl-5.10.y .
+        run: git clone https://github.com/microsoft/WSL2-Linux-Kernel .
         
       - name: Install build tool chain
         run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev dwarves -y
