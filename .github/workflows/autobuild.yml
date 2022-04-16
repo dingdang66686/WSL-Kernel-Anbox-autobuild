@@ -23,11 +23,17 @@ jobs:
       - name: Fetch latest wsl kernel source
         run: git clone https://github.com/microsoft/WSL2-Linux-Kernel .
         
+      - name: Checkout
+        uses: actions/checkout@v3.0.1
+        with:
+          path: overlay
+        
+        
       - name: Install build tool chain
         run: sudo apt update && sudo apt install build-essential flex bison libssl-dev libelf-dev dwarves -y
       
       - name: Enable drivers for anbox
-        run:  cp Microsoft/config-wsl .config && cat config-append >> .config
+        run:  cp Microsoft/config-wsl .config && cat overlay/config-append >> .config
       
       - name: Build linux kernel
         run: make
